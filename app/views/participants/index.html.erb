@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Participants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Full Name</th>
+      <th>Actuarial Designation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @participants.each do |participant| %>
+      <tr>
+        <td>
+          <%= link_to 'Edit', edit_participant_path(participant.geid) %>
+          <%= link_to 'Delete', participant_path(participant.geid), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td>
+          <%= link_to participant.lastname + ', ' + participant.firstname, participant_path(participant.geid) %>
+        </td>
+        <td><%= participant.designation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Participant', new_participant_path %>

@@ -1,0 +1,194 @@
+<%= javascript_pack_tag "participants" %>
+
+<h1>New Participant</h1>
+<div class="sec-nav select" id="emp-nav">Employee Details</div>
+<div class="sec-nav" id="work-nav">Work Details</div>
+<div class="sec-nav" id="conf-nav">Confidential Details</div>
+
+<%= form_with model: @participant do |x| %>
+    <div class="section" id="emp-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Employee ID</td>
+                    <td colspan=3><%= x.text_field :geid, class: "integer" %></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td colspan=3><%= x.text_field :firstname %></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td colspan=3><%= x.text_field :lastname %></td>
+                </tr>
+                <tr>
+                    <td>Email Address</td>
+                    <td colspan=3><%= x.text_field :email %></td>
+                </tr>
+                <tr>
+                    <td>Actuarial Designation</td>
+                    <td colspan=3><%= x.text_field :designation %></td>
+                </tr>
+                <tr>
+                    <td>Designation 1</td>
+                    <td><%= x.text_field :des1 %></td>
+                    <td>Year 1</td>
+                    <td><%= x.text_field :year1, class: "integer year" %></td>
+                </tr>
+                <tr>
+                    <td>Designation 2</td>
+                    <td><%= x.text_field :des2 %></td>
+                    <td>Year 2</td>
+                    <td><%= x.text_field :year2, class: "integer year" %></td>
+                </tr>
+                <tr>
+                    <td>Designation 3</td>
+                    <td><%= x.text_field :des3 %></td>
+                    <td>Year 3</td>
+                    <td><%= x.text_field :year3, class: "integer year" %></td>
+                </tr>
+                <tr>
+                    <td>Designation 4</td>
+                    <td><%= x.text_field :des4 %></td>
+                    <td>Year 4</td>
+                    <td><%= x.text_field :year4, class: "integer year" %></td>
+                </tr>
+                <tr>
+                    <td>Global Comments</td>
+                    <td colspan=3><%= x.text_area :globcom %></td>
+                </tr>
+                <tr>
+                    <td>Confidential Comments</td>
+                    <td colspan=3><%= x.text_area :confcom %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="work-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Manager First Name</td>
+                    <td><%= x.text_field :manfn %></td>
+                    <td>Officer First Name</td>
+                    <td><%= x.text_field :offfn %>
+                </tr>
+                <tr>
+                    <td>Manager Last Name</td>
+                    <td><%= x.text_field :manln %></td>
+                    <td>Officer Last Name</td>
+                    <td><%= x.text_field :offln %></td>
+                </tr>
+                <tr>
+                    <td>Manager Email</td>
+                    <td><%= x.text_field :manemail %></td>
+                    <td>Officer Email</td>
+                    <td><%= x.text_field :offemail %></td>
+                </tr>
+                <tr>
+                    <td>Line of Business</td>
+                    <td><%= x.text_field :lob %></td>
+                    <td>Office Location</td>
+                    <td><%= x.text_field :location %></td>
+                </tr>
+                <tr>
+                    <td>Sub Line of Business</td>
+                    <td><%= x.text_field :sublob %></td>
+                    <td>Employment Status</td>
+                    <td><%= x.select :employee, [["Active", true], ["Inactive", false]], :selected => ["Active", true] %></td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td><%= x.text_field :dep %></td>
+                    <td>Participant Status</td>
+                    <td><%= x.select :participant, [["Active", true], ["Inactive", false]], :selected => ["Active", true] %></td>
+                </tr>
+                <tr>
+                    <td>Division</td>
+                    <td><%= x.text_field :div %></td>
+                    <td>Program Appointment Date</td>
+                    <td><%= x.date_field :program %></td>
+                </tr>
+                <tr>
+                    <td>Sub Division</td>
+                    <td><%= x.text_field :subdiv %></td>
+                    <td>Exam Standard</td>
+                    <td><%= x.date_field :examstd %></td>
+                </tr>
+                <tr>
+                    <td>Section</td>
+                    <td><%= x.text_field :sec %></td>
+                    <td>FSA Track</td>
+                    <td><%= x.text_field :fsa %></td>
+                </tr>
+                <tr>
+                    <td>Hire Date(s)</td>
+                    <td><%= x.date_field :hire %></td>
+                    <td>Pass Rate</td>
+                    <td>This field will be automatically calculated</td>
+                </tr>
+                <tr>
+                    <td>Termination Date</td>
+                    <td><%= x.date_field :term %></td>
+                    <td>Replacement Status</td>
+                    <td><%= x.select :replace, ["N/A", "Pending", "No Replacement Needed", "Replaced"], :selected => "N/A" %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="conf-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Year of Data</td>
+                    <td><%= x.text_field :datayr, class: "integer year" %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr"></span> Salary</td>
+                    <td><%= x.text_field :salaryc %></td>
+                    <td><span class="cyr"></span> Rating</td>
+                    <td><%= x.text_field :rating %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr1"></span> Salary</td>
+                    <td><%= x.text_field :salaryc1 %></td>
+                    <td><span class="cyr1"></span> Rating</td>
+                    <td><%= x.text_field :rating1 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr2"></span> Salary</td>
+                    <td><%= x.text_field :salaryc2 %></td>
+                    <td><span class="cyr2"></span> Rating</td>
+                    <td><%= x.text_field :rating2 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr3"></span> Salary</td>
+                    <td><%= x.text_field :salaryc3 %></td>
+                    <td><span class="cyr3"></span> Rating</td>
+                    <td><%= x.text_field :rating3 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr"></span> Bonus</td>
+                    <td><%= x.text_field :bonus %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr1"></span> Bonus</td>
+                    <td><%= x.text_field :bonus1 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr2"></span> Bonus</td>
+                    <td><%= x.text_field :bonus2 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr3"></span> Bonus</td>
+                    <td><%= x.text_field :bonus3 %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%= link_to "Cancel", participants_path %>
+    <%= x.submit "Save" %> 
+<% end %>

@@ -1,2 +1,0 @@
-class InterviewsController < ApplicationController
-end

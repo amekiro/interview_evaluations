@@ -1,0 +1,19 @@
+<h1>New Designation</h1>
+
+<%= form_with model: @designation do |x| %>
+    <div class="section">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Actuarial Code</td>
+                    <td><%= x.text_field :code %></td>
+                    <td>Actuarial Designation</td>
+                    <td><%= x.text_field :designation %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%= link_to "Cancel", designations_path %>
+    <%= x.submit "Save" %> 
+<% end %>

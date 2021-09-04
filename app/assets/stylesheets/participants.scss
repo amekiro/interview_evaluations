@@ -1,0 +1,45 @@
+// Place all the styles related to the Participants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.sec-nav {
+    float: left;
+    padding: 10px 20px;
+    width: 150px;
+    height: 10px;
+    text-align: center;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    background: white;
+}
+
+#emp-nav, #emp-cont {
+    border: rgb(103, 131, 255) solid 3px;
+}
+
+#work-nav, #work-cont {
+    border: rgb(250, 103, 255) solid 3px;
+}
+
+#conf-nav, #conf-cont {
+    border: rgb(255, 102, 55) solid 3px;
+}
+
+.section {
+    clear: both;
+    padding: 7px;
+}
+
+.section table {
+    width: 100%;
+}
+
+.section td:nth-child(2n-1) {
+    font-weight: bold;
+}
+
+textarea, input {
+    width: 100%;
+}

@@ -1,0 +1,95 @@
+Cycle:
+
+Individual leaves program/company
+Determine if new hire is needed for replacement
+Create opening
+Candidate applies
+Identify candidates - ask manager if they have interest
+Set up interview schedule
+Submit evaluations
+Review evaluations
+Submit candidate for hire - convert to participant
+
+
+
+***Participant list***
+- First Name
+- Last Name
+- Email Address
+- Manager First Name
+- Manager Last Name
+- Manager Email
+- Current Participant
+	- Changed to false, trigger weekly email to to manager until Replacement Status is changed
+- Current Employee
+- Replacement Status - N/A, Pending, No Replacement Needed, Replaced
+- Scheduled to leave program
+
+
+Manager email - would you like to replace with a new candidate?
+No - update Replacement Status to "No Replacement Needed"
+Yes - send manager to form
+
+***Job Opening list***
+- Manager First Name
+- Manager Last Name
+- Requested Interviewer's name + email
+
+***Candidate Application***
+- Email Address
+
+We noticed that you applied for [position] on [date] and have prefilled some of your information. Please review the below information and make any necessary updates.
+- First Name
+- Last Name
+- University
+- Degree
+- Major
+- Comments
+- Resume
+- Status
+
+***Candidates List***
+- First Name
+- Last Name
+- Email Address(es)
+- If first name and last name are the same, ask if they're the same person. If yes, merge with older data
+- Status
+- University
+- Degree
+- Major
+- Need Program Interviewer
+- Comments
+- Applied positions
+- Candidate for - list all open positions, requires approval from manager, list all rejected positions
+- Availability
+- Submitted evaluations for current opening
+- Expected evaluations for current opening
+- Total submitted evaluations
+- Resume
+- Average of evaluation numbers
+- Button to hire or reject candidate - need secondary confirmation
+	- Hire will add candidate to candidates list
+
+Manager receives email asking if he/she wants to interview
+No - Candidate for is updated to note as rejected
+Yes - Email is sent to candidate asking for availability. Once availability is updated, interviewers are sent an email to select a time slot, calendar invite is sent and Interview List is updated
+
+***Interview List*** - merge with Evaluation List
+- Candidate Full Name
+- Candidate Email
+- Interviewer Full Name
+- Interviewer Email
+- Date/Time of interview
+
+- Leadership
+- Communication
+- Attitude
+- Initiative
+- Self Confidence
+- Tech Skills
+- Business Skills
+- Management Potential
+- Commitment to field
+- Give offer
+
+Upon submission, than interviewer for completing form, and update Candidates list averages

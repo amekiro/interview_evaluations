@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Designations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @designations.each do |designation| %>
+      <tr>
+        <td>
+          <%= link_to 'Edit', edit_designation_path(designation.code) %>
+          <%= link_to 'Destroy', designation_path(designation.code), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td>
+          <%= link_to designation.code, designation_path(designation.code) %>
+        </td>
+        <td><%= designation.designation %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Designation', new_designation_path %>
