@@ -26,20 +26,3 @@
 #conf-nav, #conf-cont {
     border: rgb(255, 102, 55) solid 3px;
 }
-
-.section {
-    clear: both;
-    padding: 7px;
-}
-
-.section table {
-    width: 100%;
-}
-
-.section td:nth-child(2n-1) {
-    font-weight: bold;
-}
-
-textarea, input {
-    width: 100%;
-}

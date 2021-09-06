@@ -1,8 +1,10 @@
 <%= javascript_pack_tag "participants" %>
+<%= stylesheet_link_tag "participants" %>
 
 <h1>New Participant</h1>
 <div class="sec-nav select" id="emp-nav">Employee Details</div>
 <div class="sec-nav" id="work-nav">Work Details</div>
+<div class="sec-nav" id="man-nav">Upper Management Details</div>
 <div class="sec-nav" id="conf-nav">Confidential Details</div>
 
 <%= form_with model: @participant do |x| %>
@@ -10,20 +12,16 @@
         <table>
             <tbody>
                 <tr>
-                    <td>Employee ID</td>
-                    <td colspan=3><%= x.text_field :geid, class: "integer" %></td>
-                </tr>
-                <tr>
                     <td>First Name</td>
-                    <td colspan=3><%= x.text_field :firstname %></td>
-                </tr>
-                <tr>
+                    <td><%= x.text_field :firstname %></td>
                     <td>Last Name</td>
-                    <td colspan=3><%= x.text_field :lastname %></td>
+                    <td><%= x.text_field :lastname %></td>
                 </tr>
                 <tr>
                     <td>Email Address</td>
-                    <td colspan=3><%= x.text_field :email %></td>
+                    <td><%= x.text_field :email %></td>
+                    <td>Employee ID</td>
+                    <td><%= x.text_field :geid, class: "integer" %></td>
                 </tr>
                 <tr>
                     <td>Actuarial Designation</td>
@@ -68,24 +66,6 @@
     <div class="section" id="work-cont">
         <table>
             <tbody>
-                <tr>
-                    <td>Manager First Name</td>
-                    <td><%= x.text_field :manfn %></td>
-                    <td>Officer First Name</td>
-                    <td><%= x.text_field :offfn %>
-                </tr>
-                <tr>
-                    <td>Manager Last Name</td>
-                    <td><%= x.text_field :manln %></td>
-                    <td>Officer Last Name</td>
-                    <td><%= x.text_field :offln %></td>
-                </tr>
-                <tr>
-                    <td>Manager Email</td>
-                    <td><%= x.text_field :manemail %></td>
-                    <td>Officer Email</td>
-                    <td><%= x.text_field :offemail %></td>
-                </tr>
                 <tr>
                     <td>Line of Business</td>
                     <td><%= x.text_field :lob %></td>
@@ -133,6 +113,31 @@
                     <td><%= x.date_field :term %></td>
                     <td>Replacement Status</td>
                     <td><%= x.select :replace, ["N/A", "Pending", "No Replacement Needed", "Replaced"], :selected => "N/A" %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="man-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Manager First Name</td>
+                    <td><%= x.text_field :manfn %></td>
+                    <td>Officer First Name</td>
+                    <td><%= x.text_field :offfn %>
+                </tr>
+                <tr>
+                    <td>Manager Last Name</td>
+                    <td><%= x.text_field :manln %></td>
+                    <td>Officer Last Name</td>
+                    <td><%= x.text_field :offln %></td>
+                </tr>
+                <tr>
+                    <td>Manager Email</td>
+                    <td><%= x.text_field :manemail %></td>
+                    <td>Officer Email</td>
+                    <td><%= x.text_field :offemail %></td>
                 </tr>
             </tbody>
         </table>

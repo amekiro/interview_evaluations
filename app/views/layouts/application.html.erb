@@ -11,38 +11,61 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <!--<header>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path() %></li>
-        <li>Candidates ▼
-          <ul>
-            <li>All Candidates</li>
-            <li>Internship</li>
-            <li>Full Time</li>
-            <li>Pending Interviews</li>
-            <li>Incoming Hires</li>
-          </ul>
-        </li>
-        <li>Interviews ▼
-          <ul>
-            <li>All Interviews</li>
-            <li>Upcoming Interviews</li>
-            <li>Interviews by Interviewer</li>
-          </ul>
-        </li>
-        <li>Evaluations ▼
-          <ul>
-            <li>All Evaluations</li>
-            <li>Evaluations by Candidate</li>
-            <li>Evaluations by Interviewer</li>
-          </ul>
-        </li>
-        <li><%= link_to "User Guide", guide_path() %></li>
-      </ul>
-    </nav>
-  </header>-->
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "Home", root_path() %></li>
+          <li>Associate Information <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+            <ul>
+              <li><%= link_to "All Associates", participants_path() %></li>
+              <li>Current Participants</li>
+            </ul>
+          </li>
+          <li>Recruiting <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+            <ul>
+              <li>Job Requisitions <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+                <ul>
+                  <li><%= link_to "All Requisitions", openings_path() %></li>
+                  <li>All Open Positions</li>
+                </ul>
+              </li>
+              <li>Candidates <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+                <ul>
+                  <li>All Candidates</li>
+                  <li>Internship</li>
+                  <li>Full Time</li>
+                  <li>Pending Interviews</li>
+                  <li>Incoming Hires</li>
+                </ul>
+              </li>
+              <li>Interviews <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+                <ul>
+                  <li>All Interviews</li>
+                  <li>Upcoming Interviews</li>
+                  <li>Interviews by Interviewer</li>
+                </ul>
+              </li>
+              <li>Evaluations <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+                <ul>
+                  <li>All Evaluations</li>
+                  <li>Evaluations by Candidate</li>
+                  <li>Evaluations by Interviewer</li>
+                </ul>
+              </li>
+            </ul>
+          </li>          
+          <li>Site Management <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+            <ul>
+              <li><%= link_to "Actuarial Designations", designations_path() %></li>
+            </ul>
+          </li>
+          <li><%= link_to "User Guide", guide_path() %></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="content">
+      <%= yield %>
+    </div>
   </body>
 </html>

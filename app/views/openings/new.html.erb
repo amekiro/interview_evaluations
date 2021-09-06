@@ -1,0 +1,35 @@
+<h1>New Opening</h1>
+
+<%= form_with model: @opening do |x| %>
+    <div class="section">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Manager First Name</td>
+                    <td><%= x.text_field :firstname %></td>
+                    <td>Manager Last Name</td>
+                    <td><%= x.text_field :lastname %></td>
+                </tr>
+                <tr>
+                    <td>Position Type</td>
+                    <td>
+                        <% @jobtype.each do |job| %>
+                            <%= x.check_box :position, { multiple: true }, job, false %> <%= job %>
+                        <% end %>
+                    </td>
+                    <td>Level</td>
+                    <td><%= x.text_field :level %></td>
+                </tr>
+                <tr>
+                    <td>Qualifications</td>
+                    <td colspan=3><%= x.text_area :qualification %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%= link_to 'Cancel', openings_path %>
+    <%= x.submit "Save as Draft" %>
+    <%= x.submit "Submit" %>
+<% end %>
+
