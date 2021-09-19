@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/guide' => 'pages#guide'
 
   resources :participants
+  get '/participants/program' => 'participants#indexProg'
+  
   resources :designations
   resources :openings
 end

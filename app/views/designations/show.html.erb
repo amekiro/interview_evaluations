@@ -1,17 +1,2 @@
-<h1><%= @designation.code %></h1>
-<div class="section">
-    <table>
-        <tbody>
-            <tr>
-                <td>Actuarial Code</td>
-                <td><%= @designation.code %></td>
-                <td>Actuarial Designation</td>
-                <td><%= @designation.designation %></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<%= link_to 'Edit', edit_designation_path(@designation.code) %> |
-<%= link_to 'Back', designations_path %>
+<%= link_to 'Edit Entry', edit_designation_path(@designation.code) %> | <%= link_to 'Return to Designation List', designations_path %>
+<h1><%= @designation.code %> - <%= @designation.designation %></h1>

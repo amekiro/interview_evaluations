@@ -1,9 +1,10 @@
 class DesignationsController < ApplicationController
   before_action :set_designation, only: %i[ show edit update destroy ]
+  before_action :check_action, only: %i[ create update ]
 
   # GET /designations or /designations.json
   def index
-    @designations = Designation.all
+    @designations = Designation.all.sort_by {|obj| obj.code}
   end
 
   # GET /designations/1 or /designations/1.json
@@ -23,14 +24,10 @@ class DesignationsController < ApplicationController
   def create
     @designation = Designation.new(designation_params)
 
-    respond_to do |format|
-      if @designation.save
-        format.html { redirect_to designations_path }
-        format.json { render :show, status: :created, location: @designation }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @designation.errors, status: :unprocessable_entity }
-      end
+    if @designation.save
+      redirect_to designations_path
+    else
+      render 'new'
     end
   end
 
@@ -65,5 +62,11 @@ class DesignationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def designation_params
       params.require(:designation).permit(:code, :designation)
+    end
+
+    def check_action
+      if params[:cancel]
+        redirect_to designations_path
+      end
     end
 end

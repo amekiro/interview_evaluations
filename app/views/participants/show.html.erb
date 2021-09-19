@@ -1,184 +1,210 @@
 <%= javascript_pack_tag "participants" %>
+<%= stylesheet_link_tag "participants" %>
 
-<h1><%= @participant.lastname %>, <%= @participant.firstname %></h1>
-<div class="sec-nav select" id="emp-nav">Employee Details</div>
-<div class="sec-nav" id="work-nav">Work Details</div>
-<div class="sec-nav" id="conf-nav">Confidential Details</div>
-
-<div class="section" id="emp-cont">
-    <table>
-        <tbody>
-            <tr>
-                <td>Employee ID</td>
-                <td colspan=3><%= @participant.geid %></td>
-            </tr>
-            <tr>
-                <td>Email Address</td>
-                <td colspan=3><%= @participant.email %></td>
-            </tr>
-            <tr>
-                <td>Actuarial Designation</td>
-                <td colspan=3><%= @participant.designation %></td>
-            </tr>
-            <tr>
-                <td>Designation 1</td>
-                <td><%= @participant.des1 %></td>
-                <td>Year 1</td>
-                <td><%= @participant.year1 %></td>
-            </tr>
-            <tr>
-                <td>Designation 2</td>
-                <td><%= @participant.des2 %></td>
-                <td>Year 2</td>
-                <td><%= @participant.year2 %></td>
-            </tr>
-            <tr>
-                <td>Designation 3</td>
-                <td><%= @participant.des3 %></td>
-                <td>Year 3</td>
-                <td><%= @participant.year3 %></td>
-            </tr>
-            <tr>
-                <td>Designation 4</td>
-                <td><%= @participant.des4 %></td>
-                <td>Year 4</td>
-                <td><%= @participant.year4 %></td>
-            </tr>
-            <tr>
-                <td>Global Comments</td>
-                <td colspan=3><%= @participant.globcom %></td>
-            </tr>
-            <tr>
-                <td>Confidential Comments</td>
-                <td colspan=3><%= @participant.confcom %></td>
-            </tr>
-        </tbody>
-    </table>
+<div id="employee">
+    <%= link_to 'Edit Entry', edit_participant_path(@participant.geid) %> | <%= link_to 'Return to Employee List', participants_path %>
+    <h1><%= @participant.lastname %>, <%= @participant.firstname %></h1>
+    <h2><%= @participant.geid %></h2>
 </div>
 
-<div class="section" id="work-cont">
-    <table>
-        <tbody>
-            <tr>
-                <td>Manager First Name</td>
-                <td><%= @participant.manfn %></td>
-                <td>Officer First Name</td>
-                <td><%= @participant.offfn %>
-            </tr>
-            <tr>
-                <td>Manager Last Name</td>
-                <td><%= @participant.manln %></td>
-                <td>Officer Last Name</td>
-                <td><%= @participant.offln %></td>
-            </tr>
-            <tr>
-                <td>Manager Email</td>
-                <td><%= @participant.manemail %></td>
-                <td>Officer Email</td>
-                <td><%= @participant.offemail %></td>
-            </tr>
-            <tr>
-                <td>Line of Business</td>
-                <td><%= @participant.lob %></td>
-                <td>Office Location</td>
-                <td><%= @participant.location %></td>
-            </tr>
-            <tr>
-                <td>Sub Line of Business</td>
-                <td><%= @participant.sublob %></td>
-                <td>Employment Status</td>
-                <td><%= @participant.employee %></td>
-            </tr>
-            <tr>
-                <td>Department</td>
-                <td><%= @participant.dep %></td>
-                <td>Participant Status</td>
-                <td><%= @participant.participant %></td>
-            </tr>
-            <tr>
-                <td>Division</td>
-                <td><%= @participant.div %></td>
-                <td>Program Appointment Date</td>
-                <td><%= @participant.program %></td>
-            </tr>
-            <tr>
-                <td>Sub Division</td>
-                <td><%= @participant.subdiv %></td>
-                <td>Exam Standard</td>
-                <td><%= @participant.examstd %></td>
-            </tr>
-            <tr>
-                <td>Section</td>
-                <td><%= @participant.sec %></td>
-                <td>FSA Track</td>
-                <td><%= @participant.fsa %></td>
-            </tr>
-            <tr>
-                <td>Hire Date(s)</td>
-                <td><%= @participant.hire %></td>
-                <td>Pass Rate</td>
-                <td>This field will be automatically calculated</td>
-            </tr>
-            <tr>
-                <td>Termination Date</td>
-                <td><%= @participant.term %></td>
-                <td>Replacement Status</td>
-                <td><%= @participant.replace %></td>
-            </tr>
-        </tbody>
-    </table>
+<div id="prog-det">
+    <%= button_to "Attachments", "/", class: "action program" %>
+    <%= button_to "Exam History", "/", class: "action program" %>
+    <%= button_to "Reimbursements", "/", class: "action program" %>
+    <%= button_to "Salary Actions", "/", class: "action program" %>
+    <%= button_to "Work History", "/", class: "action program" %>
 </div>
 
-<div class="section" id="conf-cont">
-    <table>
-        <tbody>
-            <tr>
-                <td>Year of Data</td>
-                <td><%= @participant.datayr %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr"></span> Salary</td>
-                <td><%= @participant.salaryc %></td>
-                <td><span class="cyr"></span> Rating</td>
-                <td><%= @participant.rating %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr1"></span> Salary</td>
-                <td><%= @participant.salaryc1 %></td>
-                <td><span class="cyr1"></span> Rating</td>
-                <td><%= @participant.rating1 %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr2"></span> Salary</td>
-                <td><%= @participant.salaryc2 %></td>
-                <td><span class="cyr2"></span> Rating</td>
-                <td><%= @participant.rating2 %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr3"></span> Salary</td>
-                <td><%= @participant.salaryc3 %></td>
-                <td><span class="cyr3"></span> Rating</td>
-                <td><%= @participant.rating3 %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr"></span> Bonus</td>
-                <td><%= @participant.bonus %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr1"></span> Bonus</td>
-                <td><%= @participant.bonus1 %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr2"></span> Bonus</td>
-                <td><%= @participant.bonus2 %></td>
-            </tr>
-            <tr>
-                <td><span class="cyr3"></span> Bonus</td>
-                <td><%= @participant.bonus3 %></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<div id="detail">
+    <div class="sec-nav select" id="emp-nav">Employee Details</div>
+    <div class="sec-nav" id="work-nav">Work Details</div>
+    <div class="sec-nav" id="man-nav">Management Details</div>
+    <div class="sec-nav" id="stud-nav">Student Details</div>
+    <div class="sec-nav" id="conf-nav">Confidential Details</div>
 
-<%= link_to 'Edit', edit_participant_path(@participant.geid) %> |
-<%= link_to 'Back', participants_path %>
+    <div class="section" id="emp-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Email Address</td>
+                    <td colspan=3><%= @participant.email %></td>
+                </tr>
+                <tr>
+                    <td>Actuarial Designation</td>
+                    <td colspan=3><%= @participant.designation.designation %></td>
+                </tr>
+                <tr>
+                    <td>Designation 1</td>
+                    <td><%= @participant.des1 %></td>
+                    <td>Year 1</td>
+                    <td><%= @participant.year1 %></td>
+                </tr>
+                <tr>
+                    <td>Designation 2</td>
+                    <td><%= @participant.des2 %></td>
+                    <td>Year 2</td>
+                    <td><%= @participant.year2 %></td>
+                </tr>
+                <tr>
+                    <td>Designation 3</td>
+                    <td><%= @participant.des3 %></td>
+                    <td>Year 3</td>
+                    <td><%= @participant.year3 %></td>
+                </tr>
+                <tr>
+                    <td>Designation 4</td>
+                    <td><%= @participant.des4 %></td>
+                    <td>Year 4</td>
+                    <td><%= @participant.year4 %></td>
+                </tr>
+                <tr>
+                    <td>Global Comments</td>
+                    <td colspan=3><%= @participant.globcom %></td>
+                </tr>
+                <tr>
+                    <td>Confidential Comments</td>
+                    <td colspan=3><%= @participant.confcom %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="work-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Line of Business</td>
+                    <td><%= @participant.lob %></td>
+                    <td>Job Title</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Sub Line of Business</td>
+                    <td><%= @participant.sublob %></td>
+                    <td>Office Location</td>
+                    <td><%= @participant.location %></td>
+                </tr>
+                <tr>
+                    <td>Department</td>
+                    <td><%= @participant.dep %></td>
+                    <td>Employment Status</td>
+                    <td><%= @participant.employee %></td>
+                </tr>
+                <tr>
+                    <td>Division</td>
+                    <td><%= @participant.div %></td>
+                    <td>Hire Date(s)</td>
+                    <td><%= @participant.hire %></td>
+                </tr>
+                <tr>
+                    <td>Sub Division</td>
+                    <td><%= @participant.subdiv %></td>
+                    <td>Termination Date</td>
+                    <td><%= @participant.term %></td>
+                </tr>
+                <tr>
+                    <td>Section</td>
+                    <td><%= @participant.sec %></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="man-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Manager First Name</td>
+                    <td><%= @participant.manfn %></td>
+                    <td>Officer First Name</td>
+                    <td><%= @participant.offfn %>
+                </tr>
+                <tr>
+                    <td>Manager Last Name</td>
+                    <td><%= @participant.manln %></td>
+                    <td>Officer Last Name</td>
+                    <td><%= @participant.offln %></td>
+                </tr>
+                <tr>
+                    <td>Manager Email</td>
+                    <td><%= @participant.manemail %></td>
+                    <td>Officer Email</td>
+                    <td><%= @participant.offemail %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="stud-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Participant Status</td>
+                    <td><%= @participant.participant %></td>
+                    <td>Exam Standard</td>
+                    <td><%= @participant.examstd %></td>
+                </tr>
+                <tr>
+                    <td>Program Appointment Date</td>
+                    <td><%= @participant.program %></td>
+                    <td>FSA Track</td>
+                    <td><%= @participant.fsa %></td>
+                </tr>
+                <tr>
+                    <td>Replacement Status</td>
+                    <td><%= @participant.replace %></td>
+                    <td>Pass Rate</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section" id="conf-cont">
+        <table>
+            <tbody>
+                <tr>
+                    <td><span class="cyr"></span> Salary</td>
+                    <td><%= @participant.salaryc %></td>
+                    <td><span class="cyr"></span> Rating</td>
+                    <td><%= @participant.rating %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr1"></span> Salary</td>
+                    <td><%= @participant.salaryc1 %></td>
+                    <td><span class="cyr1"></span> Rating</td>
+                    <td><%= @participant.rating1 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr2"></span> Salary</td>
+                    <td><%= @participant.salaryc2 %></td>
+                    <td><span class="cyr2"></span> Rating</td>
+                    <td><%= @participant.rating2 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr3"></span> Salary</td>
+                    <td><%= @participant.salaryc3 %></td>
+                    <td><span class="cyr3"></span> Rating</td>
+                    <td><%= @participant.rating3 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr"></span> Bonus</td>
+                    <td colspan=3><%= @participant.bonus %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr1"></span> Bonus</td>
+                    <td colspan=3><%= @participant.bonus1 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr2"></span> Bonus</td>
+                    <td colspan=3><%= @participant.bonus2 %></td>
+                </tr>
+                <tr>
+                    <td><span class="cyr3"></span> Bonus</td>
+                    <td colspan=3><%= @participant.bonus3 %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

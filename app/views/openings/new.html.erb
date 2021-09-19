@@ -12,13 +12,12 @@
                 </tr>
                 <tr>
                     <td>Position Type</td>
-                    <td>
-                        <% @jobtype.each do |job| %>
-                            <%= x.check_box :position, { multiple: true }, job, false %> <%= job %>
-                        <% end %>
-                    </td>
+                    <td><%= x.select :position, @jobtype, {include_blank: "", selected: ""} %></td>
                     <td>Level</td>
-                    <td><%= x.text_field :level %></td>
+                    <td>
+                        <%= x.select(:level, @level, { include_hidden: false },
+                            { :multiple => true, :size => @level.length }
+                        ) %>
                 </tr>
                 <tr>
                     <td>Qualifications</td>
@@ -28,8 +27,8 @@
         </table>
     </div>
 
-    <%= link_to 'Cancel', openings_path %>
-    <%= x.submit "Save as Draft" %>
-    <%= x.submit "Submit" %>
+    <%= button_tag "Cancel", :type => "submit", name: "cancel", class: "action" %>
+    <%= x.submit "Submit", class: "action program", data: { confirm: "You will not be able to edit this entry upon submission. Are you sure you want to submit?"} %>
+    <%= x.submit "Save as Draft", class: "action draft" %>
 <% end %>
 

@@ -2,19 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.sec-nav {
-    float: left;
-    padding: 10px 20px;
-    width: 150px;
-    height: 10px;
-    text-align: center;
-    display: flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    background: white;
-}
-
+// Styles for Form
 #emp-nav, #emp-cont {
     border: rgb(103, 131, 255) solid 3px;
 }
@@ -23,6 +11,14 @@
     border: rgb(250, 103, 255) solid 3px;
 }
 
+#man-nav, #man-cont {
+    border: rgb(48, 173, 68) solid 3px;
+}
+
 #conf-nav, #conf-cont {
     border: rgb(255, 102, 55) solid 3px;
+}
+
+#stud-nav, #stud-cont {
+    border: rgb(55, 165, 255) solid 3px;
 }

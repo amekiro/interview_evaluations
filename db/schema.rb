@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
     t.string "firstname"
     t.string "lastname"
     t.text "qualification"
-    t.string "level"
+    t.text "level", default: "--- []\n"
     t.string "position"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
     t.string "firstname"
     t.string "lastname"
     t.string "email"
-    t.string "designation"
+    t.integer "designation_id"
     t.string "des1"
     t.integer "year1"
     t.string "des2"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
     t.string "offfn"
     t.string "offln"
     t.string "offemail"
+    t.string "title"
     t.string "lob"
     t.string "sublob"
     t.string "dep"
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
     t.string "rating3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["designation_id"], name: "index_participants_on_designation_id"
   end
 
 end

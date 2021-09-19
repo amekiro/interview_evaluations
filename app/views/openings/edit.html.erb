@@ -1,6 +1,36 @@
-<h1>Editing Opening</h1>
+<h1>Edit Opening</h1>
+<h2>Current status: <%= @opening.status %></h2>
 
-<%= render 'form', opening: @opening %>
+<%= form_with model: @opening do |x| %>
+    <div class="section">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Manager First Name</td>
+                    <td><%= x.text_field :firstname %></td>
+                    <td>Manager Last Name</td>
+                    <td><%= x.text_field :lastname %></td>
+                </tr>
+                <tr>
+                    <td>Position Type</td>
+                    <td><%= x.select :position, @jobtype %></td>
+                    <td>Level</td>
+                    <td><%= x.select(
+                        :level,
+                        options_for_select(@level, :selected => @opening.level),
+                        { include_hidden: false },
+                        { :multiple => true, :size => @level.length }
+                    ) %></td>
+                </tr>
+                <tr>
+                    <td>Qualifications</td>
+                    <td colspan=3><%= x.text_area :qualification %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-<%= link_to 'Show', @opening %> |
-<%= link_to 'Back', openings_path %>
+    <%= button_tag "Cancel", :type => "submit", name: "cancel", class: "action" %>
+    <%= x.submit "Submit", class: "action program", data: { confirm: "You will not be able to edit this entry upon submission. Are you sure you want to submit?"} %>
+    <%= x.submit "Save as Draft", class: "action draft" %>
+<% end %>

@@ -1,31 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= stylesheet_link_tag "participants" %>
+<h1>Employee List</h1>
 
-<h1>Participants</h1>
-
-<table>
+<%= button_to 'New Employee', new_participant_path, :method => "get", class: "action", id: "new" %>
+<table class="full-list">
   <thead>
     <tr>
-      <th>Action</th>
       <th>Full Name</th>
       <th>Actuarial Designation</th>
+      <th>Job Title</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <% @participants.each do |participant| %>
       <tr>
         <td>
-          <%= link_to 'Edit', edit_participant_path(participant.geid) %>
-          <%= link_to 'Delete', participant_path(participant.geid), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= participant.lastname + ', ' + participant.firstname %>
         </td>
+        <td><%= participant.designation.designation %></td>
+        <td><%= participant.title %></td>
         <td>
-          <%= link_to participant.lastname + ', ' + participant.firstname, participant_path(participant.geid) %>
+          <%= button_to "View", participant_path(participant.geid), :method => "get", class: "action", id: "view" %>
+          <%= button_to "Edit", edit_participant_path(participant.geid), :method => "get", class: "action", id: "edit" %>
+          <%= button_to "Delete", participant_path(participant.geid), method: :delete, data: { confirm: 'Are you sure you want to delete ' + participant.firstname + ' ' + participant.lastname + '?' }, class: "action", id: "delete" %>
         </td>
-        <td><%= participant.designation %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Participant', new_participant_path %>

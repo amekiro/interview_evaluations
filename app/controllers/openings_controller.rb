@@ -4,7 +4,7 @@ class OpeningsController < ApplicationController
 
   # GET /openings or /openings.json
   def index
-    @openings = Opening.all
+    @openings = Opening.all.sort_by {|obj| obj.firstname}.sort_by {|obj| obj.lastname}
   end
 
   # GET /openings/1 or /openings/1.json
@@ -23,11 +23,11 @@ class OpeningsController < ApplicationController
   # POST /openings or /openings.json
   def create
     @opening = Opening.new(opening_params)
+    @opening.status = pubstat ? "Pending Applications" : "Draft"
 
     respond_to do |format|
       if @opening.save
-        @opening.status = pubstat ? "Submitted" : "Draft"
-        format.html { redirect_to @opening }
+        format.html { redirect_to openings_path }
         format.json { render :show, status: :created, location: @opening }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -66,7 +66,7 @@ class OpeningsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def opening_params
-      params.fetch(:opening, {})
+      params.require(:opening).permit(:firstname, :lastname, :qualification, :status, :position , :level => [])
     end
 
     # Confirm status
@@ -76,7 +76,7 @@ class OpeningsController < ApplicationController
 
     # Set choices
     def choice_field
-      puts "Hello"
       @jobtype = ["Internship", "Full Time"]
+      @level = ["Any", "Pre-Associate", "Near Associate", "Recent Associate", "Near Fellow"]
     end
 end

@@ -1,16 +1,20 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: %i[ show edit update destroy ]
+  before_action :set_fields, only: %i[ new edit ]
+  before_action :check_action, only: %i[ create update ]
 
   # GET /participants or /participants.json
   def index
-    @participants = Participant.all
+    @participants = Participant.all.sort_by {|obj| obj.firstname}.sort_by {|obj| obj.lastname}
+  end
+
+  def indexProg
+
   end
 
   # GET /participants/1 or /participants/1.json
   def show
-    #puts "Check"
-    #puts :geid
-    #@participant = Participant.find(params[:geid])
+    
   end
 
   # GET /participants/new
@@ -30,20 +34,23 @@ class ParticipantsController < ApplicationController
     if @participant.save
       redirect_to participants_path
     else
+      puts "Failure"
+      puts @participant.errors.full_messages
       render 'new'  
     end
   end
 
   # PATCH/PUT /participants/1 or /participants/1.json
   def update
-    respond_to do |format|
-      if @participant.update(participant_params)
-        format.html { redirect_to @participant }
-        format.json { render :show, status: :ok, location: @participant }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @participant.errors, status: :unprocessable_entity }
-      end
+    puts "Check"
+    @participant = Participant.find(params[@participant.id])
+    puts @participant
+    if @participant.update(participant_params)
+        puts "Success"
+        redirect_to participants_path
+    else
+        puts "Failure"
+        render 'edit'
     end
   end
 
@@ -65,5 +72,19 @@ class ParticipantsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def participant_params
       params.require(:participant).permit!
+    end
+
+    # Set fields
+    def set_fields
+      @designations = Designation.all.sort_by {|obj| obj.code}
+      @status = ["Active", "Inactive"]
+      @replacement = ["N/A", "Pending", "No Replacement Needed", "Replaced"]
+    end
+
+    # Check for cancellation
+    def check_action
+      if params[:cancel]
+        redirect_to participants_path
+      end
     end
 end

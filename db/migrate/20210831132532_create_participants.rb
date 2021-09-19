@@ -6,7 +6,7 @@ class CreateParticipants < ActiveRecord::Migration[6.1]
       t.string :firstname
       t.string :lastname
       t.string :email
-      t.string :designation
+      t.references :designation
       t.string :des1
       t.integer :year1
       t.string :des2
@@ -25,6 +25,7 @@ class CreateParticipants < ActiveRecord::Migration[6.1]
       t.string :offfn
       t.string :offln
       t.string :offemail
+      t.string :title
       t.string :lob
       t.string :sublob
       t.string :dep

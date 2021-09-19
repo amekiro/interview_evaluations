@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Edit Entry', edit_opening_path(@opening) %> | <%= link_to 'Return to Job Openings', openings_path %>
+<h1><%= @opening.position %> position reporting to <%= @opening.firstname %> <%= @opening.lastname %></h1>
+<h2>Current status: <%= @opening.status %></h2>
 
-<%= link_to 'Edit', edit_opening_path(@opening) %> |
-<%= link_to 'Back', openings_path %>
+<div class="section">
+    <table>
+        <tbody>
+            <tr>
+                <td>Level</td>
+                <td><%= @opening.level.join(";") %></td>
+            </tr>
+            <tr>
+                <td>Qualifications</td>
+                <td><%= @opening.qualification %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
