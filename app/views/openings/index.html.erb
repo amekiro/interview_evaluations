@@ -2,25 +2,205 @@
 <h1>All Job Openings</h1>
 
 <%= button_to 'New Job Opening', new_opening_path, :method => "get", class: "action", id: "new" %>
-<table class="full-list">
-  <thead>
-    <tr>
-      <th>Manager</th>
-      <th>Position Type</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @openings.each do |opening| %>
-      <tr>
-        <td><%= opening.firstname %> <%= opening.lastname %></td>
-        <td><%= opening.position %></td>
-        <td>
-          <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
-          <%= button_to "Edit", edit_opening_path(opening), :method => "get", class: "action", id: "edit" %>
-          <%= button_to "Delete", opening_path(opening), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
-        </td>
-      </tr>
+
+<div id="pending" class="category">
+  <div class="cat-head">Pending Applications</div>
+  <div class="cat-frame">
+    <% if @pending.length == 0 %>
+      There are no openings pending applications at this time.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @pending.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Cancel", cancel_opening_path(opening), method: :patch, data: { confirm: 'Are you sure you want to cancel?' }, class: "action", id: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
+<div id="offered" class="category">
+  <div class="cat-head">Job Offered</div>
+  <div class="cat-frame">
+    <% if @offered.length == 0 %>
+      There are no openings with a job offer.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @offered.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Edit", edit_opening_path(opening), :method => "get", class: "action", id: "edit" %>
+                <%= button_to "Delete", opening_path(opening), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div id="accepted" class="category">
+  <div class="cat-head">Job Accepted</div>
+  <div class="cat-frame">
+    <% if @accepted.length == 0 %>
+      There are no accepted positions pending onboarding.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @accepted.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Edit", edit_opening_path(opening), :method => "get", class: "action", id: "edit" %>
+                <%= button_to "Delete", opening_path(opening), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div id="completed" class="category">
+  <div class="cat-head">Completed Job Requisitions</div>
+  <div class="cat-frame">
+    <% if @complete.length == 0 %>
+      There are no completed job requisitions.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @complete.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Edit", edit_opening_path(opening), :method => "get", class: "action", id: "edit" %>
+                <%= button_to "Delete", opening_path(opening), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div id="cancelled" class="category">
+  <div class="cat-head">Cancelled Jobs</div>
+  <div class="cat-frame">
+    <% if @cancelled.length == 0 %>
+      There are no cancelled jobs.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cancelled.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Reopen", reopen_opening_path(opening), method: :patch, class: "action", id: "delete", :onclick => 'alert("This entry has been updated to Drafts. Please make any necessary updates and submit.")' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
+<div id="offered" class="category">
+  <div class="cat-head">Drafts</div>
+  <div class="cat-frame">
+    <% if @draft.length == 0 %>
+      There are drafts for job openings.
+    <% else %>
+      <table class="full-list">
+        <thead>
+          <tr>
+            <th>Manager</th>
+            <th>Position Type</th>
+            <th>Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @draft.each do |opening| %>
+            <tr>
+              <td><%= opening.lastname %>, <%= opening.firstname %></td>
+              <td><%= opening.position %></td>
+              <td><%= opening.level.join(";") %></td>
+              <td>
+                <%= button_to "View", opening_path(opening), :method => "get", class: "action", id: "view" %>
+                <%= button_to "Edit", edit_opening_path(opening), :method => "get", class: "action", id: "edit" %>
+                <%= button_to "Delete", opening_path(opening), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

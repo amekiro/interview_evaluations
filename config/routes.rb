@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   
   resources :designations
   resources :openings
+  patch '/openings/:id/cancel' => 'openings#cancel', as: :cancel_opening
+  patch '/openings/:id/reopen' => 'openings#reopen', as: :reopen_opening
 end

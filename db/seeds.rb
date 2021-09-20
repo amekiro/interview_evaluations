@@ -56,6 +56,21 @@ p3 = Participant.create(
   rating: 4, rating1: 2, rating2: 3, rating3: 2
 )
 
+o1 = Opening.create(
+  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', qualification: '- VBA\r\n- SQL',
+  level: ["Recent Associate"], position: 'Full Time', status: 'Draft'
+)
+
+o2 = Opening.create(
+  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', qualification: 'None',
+  level: ["Pre-Associate"], position: 'Internship', status: 'Draft'
+)
+
+o3 = Opening.create(
+  firstname: 'Brenda', lastname: 'Collins', geid: '3261346', qualification: 'We are looking for someone who has strong initiative and is able to complete tasks with minimal guidance.',
+  level: ["Recent Associate", "Near Fellow"], position: 'Full Time', status: 'Pending Applications'
+)
+
 #c1 = Candidate.create(fullname: 'Ashley Briggs', jobtype: 'Internship', university: 'NYU', degree: 'BS', major: 'Computer Science')
 #c2 = Candidate.create(fullname: 'Andy Myers', jobtype: 'Full Time', university: 'Cornell University', degree: 'MS', major: 'Cyber Security', notes: 'Came highly recommended by VP Sharon Wells')
 #c3 = Candidate.create(fullname: 'Sarah Martin', jobtype: 'Internship; Full Time', university: 'Rutgers University', degree: 'BS', major: 'Biology', notes: 'Career changer')

@@ -104,6 +104,23 @@ nav > ul > li > ul > li > ul > li {
 }
 
 /* Styles for list */
+.category {
+    clear: both;
+    width: 100%;
+}
+
+.cat-head {
+    background: rgb(10, 78, 155);
+    color: white;
+    font-weight: bold;
+    padding: 8px 24px;
+}
+
+.cat-frame {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .full-list {
     width: 100%;
 }
