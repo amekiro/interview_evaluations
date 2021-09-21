@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
   create_table "openings", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
+    t.string "geid"
+    t.boolean "program"
+    t.text "description"
+    t.text "responsibility"
     t.text "qualification"
     t.text "level", default: "--- []\n"
     t.string "position"

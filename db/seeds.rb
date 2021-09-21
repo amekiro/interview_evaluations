@@ -56,18 +56,30 @@ p3 = Participant.create(
   rating: 4, rating1: 2, rating2: 3, rating3: 2
 )
 
+progDes = 'This position is an opening for our program. We provide addtional benefits and a rotation program to develop well rounded employees.'
+progRes = 'The employee is expected to complete certain requirements in a specific time frame.'
+internDes = 'We provide an internship program as a pipeline towards full time employment.'
+internRes = 'The intern will be assigned to a team and get real life experience.'
+
 o1 = Opening.create(
-  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', qualification: '- VBA\r\n- SQL',
+  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', program: false, 
+  description: 'This is a very challening position where the employee will be coordinating with high level managers all across the world.',
+  responsibility: '- Coordinate with high level managers around the world\r\n- Develop new procedures to make all steps efficient',
+  qualification: '- VBA\r\n- SQL',
   level: ["Recent Associate"], position: 'Full Time', status: 'Draft'
 )
 
 o2 = Opening.create(
-  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', qualification: 'None',
+  firstname: 'Anthony', lastname: 'Myers', geid: '3159235', program: true,
+  description: internDes, responsibility: internRes,
+  qualification: 'None',
   level: ["Pre-Associate"], position: 'Internship', status: 'Draft'
 )
 
 o3 = Opening.create(
-  firstname: 'Brenda', lastname: 'Collins', geid: '3261346', qualification: 'We are looking for someone who has strong initiative and is able to complete tasks with minimal guidance.',
+  firstname: 'Brenda', lastname: 'Collins', geid: '3261346', program: true,
+  description: progDes, responsibility: progRes,
+  qualification: 'We are looking for someone who has strong initiative and is able to complete tasks with minimal guidance.',
   level: ["Recent Associate", "Near Fellow"], position: 'Full Time', status: 'Pending Applications'
 )
 

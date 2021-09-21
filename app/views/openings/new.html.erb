@@ -11,17 +11,34 @@
                     <td><%= x.text_field :lastname %></td>
                 </tr>
                 <tr>
-                    <td>Position Type</td>
-                    <td><%= x.select :position, @jobtype, {include_blank: "", selected: ""} %></td>
-                    <td>Level</td>
-                    <td>
+                    <td>Manager Employee ID</td>
+                    <td><%= x.text_field :geid %></td>
+                    <td rowspan=3>Level</td>
+                    <td rowspan=3>
                         <%= x.select(:level, @level, { include_hidden: false },
                             { :multiple => true, :size => @level.length }
                         ) %>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Program Position</td>
+                    <td><%= x.check_box :program, :checked => true %> Check this box if this position will be a program position.</td>
+                </tr>
+                <tr>
+                    <td>Position Type</td>
+                    <td><%= x.select :position, @jobtype, {include_blank: "", selected: ""} %></td>
+                </tr>
+                <tr>
+                    <td>Job Description</td>
+                    <td colspan=3><%= x.text_area :description, :rows => 5 %></td>
+                </tr>
+                <tr>
+                    <td>Responsibilities</td>
+                    <td colspan=3><%= x.text_area :responsibility, :rows => 5 %></td>
                 </tr>
                 <tr>
                     <td>Qualifications</td>
-                    <td colspan=3><%= x.text_area :qualification, :size => 5 %></td>
+                    <td colspan=3><%= x.text_area :qualification, :rows => 5 %></td>
                 </tr>
             </tbody>
         </table>

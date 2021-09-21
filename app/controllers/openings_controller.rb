@@ -1,6 +1,7 @@
 class OpeningsController < ApplicationController
   before_action :set_opening, only: %i[ show edit update destroy cancel reopen ]
   before_action :choice_field, only: %i[ new edit ]
+  before_action :check_action, only: %i[ create update ]
 
   # GET /openings or /openings.json
   def index
@@ -105,7 +106,7 @@ class OpeningsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def opening_params
-      params.require(:opening).permit(:firstname, :lastname, :qualification, :status, :position , :level => [])
+      params.require(:opening).permit(:firstname, :lastname, :qualification, :status, :position, :geid, :program, :description, :responsibility, :level => [])
     end
 
     # Confirm status
@@ -122,5 +123,12 @@ class OpeningsController < ApplicationController
     # Set index filters
     def sort_category(statname)
       Opening.where(:status => statname).sort_by {|obj| obj.position}.sort_by {|obj| obj.firstname}.sort_by {|obj| obj.lastname}
+    end
+
+    # Check for cancellation
+    def check_action
+      if params[:cancel]
+        redirect_to openings_path
+      end
     end
 end

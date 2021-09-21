@@ -1,5 +1,9 @@
-<%= link_to 'Edit Entry', edit_opening_path(@opening) %> | <%= link_to 'Return to Job Openings', openings_path %>
-<h1><%= @opening.position %> position reporting to <%= @opening.firstname %> <%= @opening.lastname %></h1>
+<% if @opening.status == "Draft" %>
+    <%= link_to 'Edit Entry', edit_opening_path(@opening) %> | 
+<% elsif @opening.status == "Pending Applications" %>
+    <%= link_to 'Cancel Job Opening', cancel_opening_path(@opening), method: :patch, data: { confirm: 'Are you sure you want to cancel?' } %> | 
+<% end %><%= link_to 'Return to Job Openings', openings_path %>
+<h1><%= @opening.program ? "Program" : "General" %> <%= @opening.position %> position reporting to <%= @opening.firstname %> <%= @opening.lastname %> (<%= @opening.geid %>)</h1>
 <h2>Current status: <%= @opening.status %></h2>
 
 <div class="section">
@@ -8,6 +12,14 @@
             <tr>
                 <td>Level</td>
                 <td><%= @opening.level.join(";") %></td>
+            </tr>
+            <tr>
+                <td>Job Description</td>
+                <td><%= @opening.description %></td>
+            </tr>
+            <tr>
+                <td>Responsibilities</td>
+                <td><%= @opening.responsibility %></td>
             </tr>
             <tr>
                 <td>Qualifications</td>
