@@ -19,7 +19,7 @@
           <li>Associate Information <div class="nav-static">▶</div><div class="nav-hover">▼</div>
             <ul>
               <li><%= link_to "All Associates", participants_path() %></li>
-              <li>Current Participants</li>
+              <!--<li>Current Participants</li>-->
             </ul>
           </li>
           <li>Recruiting <div class="nav-static">▶</div><div class="nav-hover">▼</div>
@@ -27,10 +27,10 @@
               <li>Job Requisitions <div class="nav-static">▶</div><div class="nav-hover">▼</div>
                 <ul>
                   <li><%= link_to "All Requisitions", openings_path() %></li>
-                  <li>All Open Positions</li>
+                  <li><%= link_to "Public Open Positions", open_roles_path() %></li>
                 </ul>
               </li>
-              <li>Candidates <div class="nav-static">▶</div><div class="nav-hover">▼</div>
+              <!--<li>Candidates <div class="nav-static">▶</div><div class="nav-hover">▼</div>
                 <ul>
                   <li>All Candidates</li>
                   <li>Internship</li>
@@ -52,15 +52,17 @@
                   <li>Evaluations by Candidate</li>
                   <li>Evaluations by Interviewer</li>
                 </ul>
-              </li>
+              </li>-->
             </ul>
           </li>          
           <li>Site Management <div class="nav-static">▶</div><div class="nav-hover">▼</div>
             <ul>
               <li><%= link_to "Actuarial Designations", designations_path() %></li>
+              <li><%= link_to "Track Master", tracks_path() %></li>
+              <li><%= link_to "Exam Master", exams_path() %></li> 
             </ul>
           </li>
-          <li><%= link_to "User Guide", guide_path() %></li>
+          <!--<li><%= link_to "User Guide", guide_path() %></li>-->
         </ul>
       </nav>
     </header>

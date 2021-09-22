@@ -10,13 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_201814) do
+ActiveRecord::Schema.define(version: 2021_09_21_183926) do
+
+  create_table "applications", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.text "designation", default: "--- []\n"
+    t.text "exam", default: "--- []\n"
+    t.string "university1"
+    t.string "degree1"
+    t.string "major1"
+    t.string "minor1"
+    t.integer "gradyr1"
+    t.string "university2"
+    t.string "degree2"
+    t.string "major2"
+    t.string "minor2"
+    t.integer "gradyr2"
+    t.string "status"
+    t.boolean "progint"
+    t.integer "appid"
+    t.text "recruiternotes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "designations", force: :cascade do |t|
     t.string "code"
     t.string "designation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "exams", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "status"
+    t.string "designation"
+    t.integer "tracks_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tracks_id"], name: "index_exams_on_tracks_id"
   end
 
   create_table "openings", force: :cascade do |t|
@@ -89,6 +126,14 @@ ActiveRecord::Schema.define(version: 2021_09_04_201814) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["designation_id"], name: "index_participants_on_designation_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

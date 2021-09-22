@@ -14,6 +14,13 @@ class OpeningsController < ApplicationController
     @cancelled = sort_category("Cancelled")
   end
 
+  # Get open positions for applications
+  def open
+    @student = Opening.where(status: "Pending Applications", position: "Full Time", program: true)
+    @intern = Opening.where(status: "Pending Applications", position: "Internship", program: true)
+    @general = Opening.where(status: "Pending Applications", position: "Full Time", program: false)
+  end
+
   # GET /openings/1 or /openings/1.json
   def show
   end

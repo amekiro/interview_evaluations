@@ -1,0 +1,23 @@
+<h1>New Track</h1>
+
+<%= form_with model: @track do |x| %>
+    <div class="section">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Track Code</td>
+                    <td><%= x.text_field :code %></td>
+                    <td>Track Name</td>
+                    <td><%= x.text_field :name %></td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td><%= x.select :status, @status, selected: @status.first %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <%= button_tag "Cancel", :type => "submit", name: "cancel", class: "action" %>
+    <%= x.submit "Save", class: "action program" %> 
+<% end %>

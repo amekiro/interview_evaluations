@@ -1,0 +1,31 @@
+<h1>All Open Positions</h1>
+
+<div id="program-frame">
+    <p>We currently have the following positions available for application. Your application will reviewed by managers of our open positions and you will be assigned for your position upon hiring.</p>
+    <div id="app-frame">
+        <%= button_to "Full Time Student Position", "/", :method => "get", class: "action", id: "view" if @student.length > 0 %>
+    </div>
+</div>
+
+<div id="ft-frame">
+    <p>If you do not wish to apply for a program position, or this is not one available, you may also apply to any of the positions below:</p>
+    <% if @general.length == 0 %>
+        <p>There are currently no open positions</p>
+    <% else %>
+        <table class="full-list">
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @general.each do |x| %>
+                    <tr>
+                        <td><%= x.level.join(";") %></td>
+                        <td><%= button_to "Apply", "/", :method => "get", class: "action", id: "view" %></td>
+                    </tr>
+            </tbody>
+        </table>
+    <% end %>
+</div>

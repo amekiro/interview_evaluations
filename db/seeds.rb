@@ -83,6 +83,30 @@ o3 = Opening.create(
   level: ["Recent Associate", "Near Fellow"], position: 'Full Time', status: 'Pending Applications'
 )
 
+t1 = Track.create(
+  code: 'CFE', name: 'Corporate Finance and ERM', status: 'Currently offered'
+)
+
+t1 = Track.create(
+  code: 'QFI', name: 'Quantitative Finance and Investment', status: 'Currently offered'
+)
+
+t1 = Track.create(
+  code: 'ILA', name: 'Individual Life and Annuities', status: 'Currently offered'
+)
+
+t1 = Track.create(
+  code: 'RB', name: 'Retirement Benefits', status: 'Currently offered'
+)
+
+t1 = Track.create(
+  code: 'GH', name: 'Group and Health', status: 'Currently offered'
+)
+
+t1 = Track.create(
+  code: 'GI', name: 'General Insurance', status: 'Currently offered'
+)
+
 #c1 = Candidate.create(fullname: 'Ashley Briggs', jobtype: 'Internship', university: 'NYU', degree: 'BS', major: 'Computer Science')
 #c2 = Candidate.create(fullname: 'Andy Myers', jobtype: 'Full Time', university: 'Cornell University', degree: 'MS', major: 'Cyber Security', notes: 'Came highly recommended by VP Sharon Wells')
 #c3 = Candidate.create(fullname: 'Sarah Martin', jobtype: 'Internship; Full Time', university: 'Rutgers University', degree: 'BS', major: 'Biology', notes: 'Career changer')

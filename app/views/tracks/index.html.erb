@@ -1,0 +1,31 @@
+<h1>Exam Tracks</h1>
+
+<%= button_to 'New Track', new_track_path, :method => "get", class: "action", id: "new" %>
+
+<table class="full-list">
+  <thead>
+    <tr>
+      <th>Track Code</th>
+      <th>Track Name</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tracks.each do |track| %>
+      <tr>
+        <td><%= track.code %></td>
+        <td><%= track.name %></td>
+        <td><%= track.status %></td>
+        <td>
+          <%= button_to "View", track_path(track), :method => "get", class: "action", id: "view" %>
+          <%= button_to "Edit", edit_track_path(track), :method => "get", class: "action", id: "edit" %>
+          <%= button_to "Delete", track_path(track), method: :delete, data: { confirm: 'Are you sure you want to delete?' }, class: "action", id: "delete" %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

@@ -1,0 +1,5 @@
+<div id="employee">
+    <%= link_to 'Edit Entry', edit_track_path(@track) %> | <%= link_to 'Return to Tracks List', tracks_path %>
+    <h1><%= @track.code %> Track: <%= @track.name %></h1>
+    <h2>Status: <%= @track.status %></h2>
+</div>
